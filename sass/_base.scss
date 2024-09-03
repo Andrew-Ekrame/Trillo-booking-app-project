@@ -15,7 +15,41 @@ Grey dark 2: #777
 Grey dark 3: #999
 
 */
-
+/*
+  breakpoints
+  1200 -> largest
+  1100 -> large
+  950 -> medium
+  600 -> small
+  500 -> smallest
+*/
+@mixin respond($size) {
+  @if $size== largest {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $size== large {
+    @media only screen and (max-width: 68.75em) {
+      @content;
+    }
+  }
+  @if $size== medium {
+    @media only screen and (max-width: 59.375em) {
+      @content;
+    }
+  }
+  @if $size== small {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    }
+  }
+  @if $size== smallest {
+    @media only screen and (max-width: 31.25em) {
+      @content;
+    }
+  }
+}
 :root {
   --color-primary: #eb2f64;
   --color-primary-light: #ff3366;
@@ -29,7 +63,6 @@ Grey dark 3: #999
   --color-grey-dark-3: #999;
   --box-shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
 }
-
 *,
 *::after,
 *::before {
@@ -40,6 +73,9 @@ Grey dark 3: #999
 
 html {
   font-size: 62.5%;
+  @include respond(large) {
+    font-size: 50%;
+  }
 }
 
 body {
